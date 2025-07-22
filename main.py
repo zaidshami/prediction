@@ -17,6 +17,9 @@ def predict(data: dict):
     try:
         df = pd.DataFrame([data])
         prediction = model.predict(df)
-        return {"prediction": float(prediction[0])}
+        return {
+            "prediction": float(prediction[0]),
+            "probability": float(prediction[0])  # تُستخدم نفس القيمة كمؤشر للاتجاه
+        }
     except Exception as e:
         return {"error": str(e)}
